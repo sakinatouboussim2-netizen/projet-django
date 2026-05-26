@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block titre %}Creation d'objets - POO{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <h2>Code de creation :</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;overflow-x:auto;">{{ code_creation }}</pre>
+    <div class="info" style="margin-top:12px;">
+        Nombre total d'objets crees : <strong>Animal.nb_animaux = {{ nb_animaux }}</strong>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Objets instancies :</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Classe</th>
+                <th>Nom</th>
+                <th>Age</th>
+                <th>Adulte ?</th>
+                <th>parler()</th>
+                <th>Action specifique</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in objets %}
+            <tr>
+                <td><code>{{ a.classe }}</code></td>
+                <td>{{ a.nom }}</td>
+                <td>{{ a.age }} an(s)</td>
+                <td>
+                    {% if a.adulte %}
+                    <span class="oui">Oui</span>
+                    {% else %}
+                    <span class="non">Non</span>
+                    {% endif %}
+                </td>
+                <td>{{ a.parole }}</td>
+                <td>
+                    {% if a.action %}{{ a.action }}{% else %}-{% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<a href="/poo/" class="btn">Retour</a>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block titre %}Lancer des des{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>Nombre de lancers : <strong>{{ nb }}</strong> | Egalites obtenues : <strong>{{ nb_egalites }}</strong></p>
+    <div style="margin: 10px 0;">
+        <a href="/des/lancer/?nb=5" class="btn">5 lancers</a>
+        <a href="/des/lancer/?nb=10" class="btn">10 lancers</a>
+        <a href="/des/lancer/?nb=20" class="btn">20 lancers</a>
+        <a href="/des/lancer/?nb=50" class="btn btn-green">50 lancers</a>
+    </div>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>Lancer</th>
+                <th>De 1</th>
+                <th>De 2</th>
+                <th>Egalite ?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for l in lancers %}
+            <tr>
+                <td>{{ l.numero }}</td>
+                <td>{{ l.de1 }}</td>
+                <td>{{ l.de2 }}</td>
+                <td>
+                    {% if l.egal %}
+                    <span class="oui">Oui</span>
+                    {% else %}
+                    <span class="non">Non</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<a href="/des/" class="btn">Retour</a>
+{% endblock %}

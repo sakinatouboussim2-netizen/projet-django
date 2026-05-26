@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block titre %}POO Python{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>La <strong>Programmation Orientee Objet</strong> organise le code en <strong>classes</strong> et <strong>objets</strong>.
+    Ce projet illustre 4 concepts fondamentaux avec les classes Animal, Chien et Chat.</p>
+</div>
+
+<div class="grid-cartes" style="margin-bottom:30px;">
+    {% for concept in concepts %}
+    <div class="carte" style="text-align:left;">
+        <h2>{{ concept.nom }}</h2>
+        <p>{{ concept.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="card">
+    <h2>Classe Animal (classe parente)</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;overflow-x:auto;">{{ code_animal }}</pre>
+</div>
+
+<div class="card">
+    <h2>Classe Chien (sous-classe)</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;overflow-x:auto;">{{ code_chien }}</pre>
+</div>
+
+<div class="grid-cartes">
+    <div class="carte">
+        <h2>Objets</h2>
+        <p>Creer des instances et afficher leurs attributs.</p>
+        <a href="/poo/animaux/" class="btn">Voir les objets</a>
+    </div>
+    <div class="carte">
+        <h2>Heritage</h2>
+        <p>Verifier les relations avec <code>isinstance()</code>.</p>
+        <a href="/poo/heritage/" class="btn btn-green">Voir l'heritage</a>
+    </div>
+    <div class="carte">
+        <h2>Polymorphisme</h2>
+        <p>Appeler <code>parler()</code> sur tous les animaux.</p>
+        <a href="/poo/polymorphisme/" class="btn btn-orange">Voir le polymorphisme</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block titre %}Division - Exceptions{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>Entrez deux nombres. Si le diviseur est <strong>0</strong>, une <code>ZeroDivisionError</code> sera interceptee.
+    Si la valeur n'est pas un nombre, une <code>ValueError</code> sera interceptee.</p>
+    <form method="post">
+        {% csrf_token %}
+        <label for="dividende">Dividende :</label>
+        <input type="text" id="dividende" name="dividende" value="{{ dividende }}" placeholder="ex: 10">
+        <br>
+        <label for="diviseur">Diviseur :</label>
+        <input type="text" id="diviseur" name="diviseur" value="{{ diviseur }}" placeholder="ex: 0">
+        <br>
+        <button type="submit" class="btn">Executer</button>
+    </form>
+</div>
+
+{% if code_execute %}
+<div class="card">
+    <h2>Code execute :</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;">{{ code_execute }}</pre>
+</div>
+{% endif %}
+
+{% if resultat is not None %}
+<div class="succes">
+    <strong>Resultat :</strong> {{ dividende }} / {{ diviseur }} = {{ resultat }}
+</div>
+{% endif %}
+
+{% if erreur %}
+<div class="erreur">
+    <strong>Exception levee - {{ erreur_type }} :</strong><br>{{ erreur }}
+</div>
+{% endif %}
+
+{% if finally_msg %}
+<div class="finally-box">
+    <strong>finally :</strong> {{ finally_msg }}
+</div>
+{% endif %}
+
+<a href="/exceptions/" class="btn">Retour</a>
+{% endblock %}

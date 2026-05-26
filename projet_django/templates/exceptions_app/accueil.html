@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titre %}Exceptions Python{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>En Python, quand une erreur survient, une <strong>exception</strong> est levee.
+    On utilise <code>try / except / finally</code> pour la capturer et eviter que le programme ne plante.</p>
+</div>
+
+{% for ex in exemples_code %}
+<div class="card">
+    <h2>{{ ex.titre }}</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;overflow-x:auto;">{{ ex.code }}</pre>
+    <div class="info" style="margin-top:12px;">{{ ex.explication }}</div>
+</div>
+{% endfor %}
+
+<div class="grid-cartes">
+    <div class="carte">
+        <h2>Division</h2>
+        <p>Gere <code>ZeroDivisionError</code> et <code>ValueError</code> lors d'une division.</p>
+        <a href="/exceptions/division/" class="btn">Tester</a>
+    </div>
+    <div class="carte">
+        <h2>Conversion</h2>
+        <p>Gere <code>ValueError</code> lors de la conversion d'une chaine en entier.</p>
+        <a href="/exceptions/conversion/" class="btn btn-green">Tester</a>
+    </div>
+    <div class="carte">
+        <h2>Acces liste</h2>
+        <p>Gere <code>IndexError</code> lors d'un acces hors limites dans une liste.</p>
+        <a href="/exceptions/liste/" class="btn btn-orange">Tester</a>
+    </div>
+</div>
+{% endblock %}

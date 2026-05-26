@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titre %}Accueil - Projet Django{% endblock %}
+
+{% block contenu %}
+<h1>Projet Django - Universite</h1>
+<p>Bienvenue dans ce projet pedagogique Django. Il contient trois parties independantes.</p>
+
+<div class="grid-cartes">
+    <div class="carte">
+        <h2>Partie 1 - Des</h2>
+        <p>Simulation du lancer de deux des a six faces. Calcul de probabilites par la simulation (Exercice 7).</p>
+        <a href="/des/" class="btn">Acceder aux des</a>
+    </div>
+    <div class="carte">
+        <h2>Partie 2 - Exceptions</h2>
+        <p>Gestion des erreurs en Python : ZeroDivisionError, ValueError, IndexError avec try / except / finally.</p>
+        <a href="/exceptions/" class="btn btn-green">Acceder aux exceptions</a>
+    </div>
+    <div class="carte">
+        <h2>Partie 3 - POO</h2>
+        <p>Programmation orientee objet : classes Animal, Chien, Chat. Encapsulation, heritage, polymorphisme.</p>
+        <a href="/poo/" class="btn btn-orange">Acceder a la POO</a>
+    </div>
+</div>
+{% endblock %}

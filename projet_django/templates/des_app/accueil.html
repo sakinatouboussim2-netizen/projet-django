@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titre %}Des - Exercice 7{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+<div class="card">
+    <p>{{ description }}</p>
+    <p>La probabilite theorique d'obtenir deux des identiques est <strong>6/36 = 0.1667</strong>.</p>
+    <p>Plus on lance de fois, plus la probabilite simulee se rapproche de la valeur theorique (loi des grands nombres).</p>
+</div>
+
+<div class="grid-cartes">
+    <div class="carte">
+        <h2>Lancer des des</h2>
+        <p>Lance n fois deux des et affiche les resultats un par un.</p>
+        <a href="/des/lancer/?nb=10" class="btn">Lancer 10 fois</a>
+    </div>
+    <div class="carte">
+        <h2>Tester la fonction</h2>
+        <p>Teste la fonction <code>test(de1, de2)</code> sur 10 exemples.</p>
+        <a href="/des/test/" class="btn btn-green">Voir les tests</a>
+    </div>
+    <div class="carte">
+        <h2>Calculer les probabilites</h2>
+        <p>Simule avec n = 1, 10, 100, 1000 ... 100 000 lancers.</p>
+        <a href="/des/probabilites/" class="btn btn-orange">Voir les probabilites</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block titre %}Polymorphisme - POO{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>Le <strong>polymorphisme</strong> permet d'appeler la <strong>meme methode</strong> sur des objets de classes differentes
+    et d'obtenir des comportements differents selon la classe reelle de l'objet.</p>
+    <h2>Code :</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;overflow-x:auto;">{{ code_polymorphisme }}</pre>
+</div>
+
+<div class="card">
+    <h2>Resultat en direct :</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Classe</th>
+                <th>parler()</th>
+                <th>se_presenter()</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in resultats_poly %}
+            <tr>
+                <td>{{ r.nom }}</td>
+                <td><code>{{ r.classe }}</code></td>
+                <td>{{ r.parole }}</td>
+                <td>{{ r.presentation }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<a href="/poo/" class="btn">Retour</a>
+{% endblock %}

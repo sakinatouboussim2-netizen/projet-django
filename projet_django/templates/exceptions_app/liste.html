@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block titre %}Liste - Exceptions{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>Liste : <code>ma_liste = {{ ma_liste }}</code> (indices 0 a {{ ma_liste|length|add:"-1" }})</p>
+    <p>Entrez un indice. Si l'indice est hors limites, une <code>IndexError</code> sera interceptee.</p>
+    <p>Essayez : <code>0</code>, <code>4</code>, <code>10</code>, <code>abc</code></p>
+    <form method="post">
+        {% csrf_token %}
+        <label for="index">Indice :</label>
+        <input type="text" id="index" name="index" value="{{ index_str }}" placeholder="ex: 10">
+        <br>
+        <button type="submit" class="btn">Acceder a l'element</button>
+    </form>
+</div>
+
+{% if code_execute %}
+<div class="card">
+    <h2>Code execute :</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;">{{ code_execute }}</pre>
+</div>
+{% endif %}
+
+{% if resultat %}
+<div class="succes">
+    <strong>Resultat :</strong> {{ resultat }}
+</div>
+{% endif %}
+
+{% if erreur %}
+<div class="erreur">
+    <strong>Exception levee :</strong><br>{{ erreur }}
+</div>
+{% endif %}
+
+{% if finally_msg %}
+<div class="finally-box">
+    <strong>finally :</strong> {{ finally_msg }}
+</div>
+{% endif %}
+
+<a href="/exceptions/" class="btn">Retour</a>
+{% endblock %}

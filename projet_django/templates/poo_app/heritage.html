@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block titre %}Heritage - POO{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <h2>Code d'heritage :</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;overflow-x:auto;">{{ code_heritage }}</pre>
+</div>
+
+<div class="card">
+    <h2>Verification avec isinstance()</h2>
+    <p><code>isinstance(objet, Classe)</code> retourne <code>True</code> si l'objet est une instance de cette classe ou d'une sous-classe.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Expression</th>
+                <th>Resultat</th>
+                <th>Explication</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for h in heritage_info %}
+            <tr>
+                <td><code>{{ h.expression }}</code></td>
+                <td>
+                    {% if h.resultat == 'True' %}
+                    <span class="oui">True</span>
+                    {% elif h.resultat == 'False' %}
+                    <span class="non">False</span>
+                    {% else %}
+                    <code>{{ h.resultat }}</code>
+                    {% endif %}
+                </td>
+                <td>{{ h.explication }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="grid-cartes">
+    <div class="card">
+        <h2>Rex (Chien)</h2>
+        <p><strong>Nom :</strong> {{ rex.nom }} | <strong>Race :</strong> {{ rex_race }}</p>
+        <p><strong>parler() :</strong> {{ rex.parole }}</p>
+        <p><strong>rapporter() :</strong> {{ rex_action }}</p>
+    </div>
+    <div class="card">
+        <h2>Mimi (Chat)</h2>
+        <p><strong>Nom :</strong> {{ mimi.nom }} | <strong>Couleur :</strong> {{ mimi_couleur }}</p>
+        <p><strong>parler() :</strong> {{ mimi.parole }}</p>
+        <p><strong>ronronner() :</strong> {{ mimi_action }}</p>
+    </div>
+</div>
+
+<a href="/poo/" class="btn">Retour</a>
+{% endblock %}

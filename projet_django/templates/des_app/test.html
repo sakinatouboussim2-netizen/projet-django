@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block titre %}Test de la fonction{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>La fonction <code>test(de1, de2)</code> retourne <code>True</code> si les deux des ont la meme valeur, <code>False</code> sinon.</p>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>Exemple</th>
+                <th>De 1</th>
+                <th>De 2</th>
+                <th>test(de1, de2)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in exemples %}
+            <tr>
+                <td>{{ e.numero }}</td>
+                <td>{{ e.de1 }}</td>
+                <td>{{ e.de2 }}</td>
+                <td>
+                    {% if e.resultat %}
+                    <span class="oui">True</span>
+                    {% else %}
+                    <span class="non">False</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<a href="/des/" class="btn">Retour</a>
+{% endblock %}

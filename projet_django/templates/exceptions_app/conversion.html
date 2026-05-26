@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block titre %}Conversion - Exceptions{% endblock %}
+
+{% block contenu %}
+<h1>{{ titre }}</h1>
+
+<div class="card">
+    <p>Entrez une valeur. Si elle ne peut pas etre convertie en entier avec <code>int()</code>, une <code>ValueError</code> sera interceptee.</p>
+    <p>Essayez : <code>abc</code>, <code>3.14</code>, <code>42</code></p>
+    <form method="post">
+        {% csrf_token %}
+        <label for="valeur">Valeur a convertir :</label>
+        <input type="text" id="valeur" name="valeur" value="{{ valeur }}" placeholder="ex: abc">
+        <br>
+        <button type="submit" class="btn">Convertir en int</button>
+    </form>
+</div>
+
+{% if code_execute %}
+<div class="card">
+    <h2>Code execute :</h2>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:16px;border-radius:6px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;">{{ code_execute }}</pre>
+</div>
+{% endif %}
+
+{% if resultat %}
+<div class="succes">
+    <strong>Resultat :</strong> {{ resultat }}
+</div>
+{% endif %}
+
+{% if erreur %}
+<div class="erreur">
+    <strong>Exception levee - ValueError :</strong><br>{{ erreur }}
+</div>
+{% endif %}
+
+{% if finally_msg %}
+<div class="finally-box">
+    <strong>finally :</strong> {{ finally_msg }}
+</div>
+{% endif %}
+
+<a href="/exceptions/" class="btn">Retour</a>
+{% endblock %}
