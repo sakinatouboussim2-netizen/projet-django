@@ -1,43 +1,53 @@
 {% extends 'base.html' %}
-
 {% block titre %}Lancer des des{% endblock %}
-
 {% block contenu %}
+
+<div class="breadcrumb">
+    <a href="/">Accueil</a> <span>â€º</span> <a href="/des/">Des</a> <span>â€º</span> Lancer
+</div>
+
 <h1>{{ titre }}</h1>
 
 <div class="card">
-    <p>Nombre de lancers : <strong>{{ nb }}</strong> | Egalites obtenues : <strong>{{ nb_egalites }}</strong></p>
-    <div style="margin: 10px 0;">
-        <a href="/des/lancer/?nb=5" class="btn">5 lancers</a>
-        <a href="/des/lancer/?nb=10" class="btn">10 lancers</a>
-        <a href="/des/lancer/?nb=20" class="btn">20 lancers</a>
-        <a href="/des/lancer/?nb=50" class="btn btn-green">50 lancers</a>
+    <p>Choisir un autre nombre de lancers :</p>
+    <form method="get" action="/des/lancer/">
+        <input type="number" name="nb" value="{{ nb }}" min="1" max="100000" placeholder="ex: 100" style="padding:8px;font-size:1rem;border-radius:6px;border:1px solid #ccc;width:150px;">
+        <button type="submit" class="btn" style="margin-left:10px;">Lancer</button>
+    </form>
+</div>
+
+<div class="stat-grid">
+    <div class="stat-box">
+        <span class="chiffre">{{ nb }}</span>
+        <span class="label">Lancers</span>
+    </div>
+    <div class="stat-box green">
+        <span class="chiffre">{{ nb_egalites }}</span>
+        <span class="label">Egalites</span>
+    </div>
+    <div class="stat-box orange">
+        <span class="chiffre">{{ probabilite }}</span>
+        <span class="label">Probabilite simulee</span>
+    </div>
+    <div class="stat-box purple">
+        <span class="chiffre">{{ probabilite_theorique }}</span>
+        <span class="label">P. theorique</span>
     </div>
 </div>
 
 <div class="card">
+    <h2>Details des lancers</h2>
     <table>
         <thead>
-            <tr>
-                <th>Lancer</th>
-                <th>De 1</th>
-                <th>De 2</th>
-                <th>Egalite ?</th>
-            </tr>
+            <tr><th>#</th><th>De 1</th><th>De 2</th><th>Egalite ?</th></tr>
         </thead>
         <tbody>
-            {% for l in lancers %}
+            {% for lancer in lancers %}
             <tr>
-                <td>{{ l.numero }}</td>
-                <td>{{ l.de1 }}</td>
-                <td>{{ l.de2 }}</td>
-                <td>
-                    {% if l.egal %}
-                    <span class="oui">Oui</span>
-                    {% else %}
-                    <span class="non">Non</span>
-                    {% endif %}
-                </td>
+                <td>{{ lancer.numero }}</td>
+                <td><strong>{{ lancer.de1 }}</strong></td>
+                <td><strong>{{ lancer.de2 }}</strong></td>
+                <td>{% if lancer.egal %}<span class="oui">Oui</span>{% else %}<span class="non">Non</span>{% endif %}</td>
             </tr>
             {% endfor %}
         </tbody>

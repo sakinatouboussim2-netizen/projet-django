@@ -1,30 +1,57 @@
 {% extends 'base.html' %}
-
 {% block titre %}Des - Exercice 7{% endblock %}
-
 {% block contenu %}
+
+<div class="breadcrumb">
+    <a href="/">Accueil</a> <span>â€º</span> Simulation des Des
+</div>
+
 <h1>{{ titre }}</h1>
+<p>On lance deux des a 6 faces. On veut calculer la <strong>probabilite que les deux des aient la meme valeur</strong>.</p>
+
 <div class="card">
-    <p>{{ description }}</p>
-    <p>La probabilite theorique d'obtenir deux des identiques est <strong>6/36 = 0.1667</strong>.</p>
-    <p>Plus on lance de fois, plus la probabilite simulee se rapproche de la valeur theorique (loi des grands nombres).</p>
+    <h2>Probabilite theorique</h2>
+    <p>Il y a <strong>6 combinaisons gagnantes</strong> sur <strong>36 combinaisons possibles</strong> : (1,1), (2,2), (3,3), (4,4), (5,5), (6,6).</p>
+    <div class="info">
+        P(egalite) = 6 / 36 = <strong>{{ probabilite_theorique }}</strong> soit environ <strong>16.67%</strong>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Choisir le nombre de lancers</h2>
+    <p>Entre le nombre de lancers que tu veux simuler, puis clique sur Lancer :</p>
+    <form method="get" action="/des/lancer/">
+        <input type="number" name="nb" value="10" min="1" max="100000" placeholder="ex: 100" style="padding:8px;font-size:1rem;border-radius:6px;border:1px solid #ccc;width:150px;">
+        <button type="submit" class="btn" style="margin-left:10px;">Lancer</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2>Module generateur.py</h2>
+    <p>Ce module est utilise par toutes les vues de cette application :</p>
+    <pre>{{ code_module }}</pre>
 </div>
 
 <div class="grid-cartes">
     <div class="carte">
         <h2>Lancer des des</h2>
-        <p>Lance n fois deux des et affiche les resultats un par un.</p>
+        <p>Lance n fois deux des et affiche chaque resultat avec son statut.</p>
         <a href="/des/lancer/?nb=10" class="btn">Lancer 10 fois</a>
     </div>
     <div class="carte">
-        <h2>Tester la fonction</h2>
-        <p>Teste la fonction <code>test(de1, de2)</code> sur 10 exemples.</p>
+        <h2>Tester test()</h2>
+        <p>Teste la fonction <code>test(de1, de2)</code> sur 10 exemples concrets.</p>
         <a href="/des/test/" class="btn btn-green">Voir les tests</a>
     </div>
     <div class="carte">
-        <h2>Calculer les probabilites</h2>
-        <p>Simule avec n = 1, 10, 100, 1000 ... 100 000 lancers.</p>
-        <a href="/des/probabilites/" class="btn btn-orange">Voir les probabilites</a>
+        <h2>Tableau probabilites</h2>
+        <p>Simule avec n = 1 jusqu a 100 000 lancers pour voir la convergence.</p>
+        <a href="/des/probabilites/" class="btn btn-orange">Voir le tableau</a>
+    </div>
+    <div class="carte">
+        <h2>Simulation libre</h2>
+        <p>Choisis ton propre nombre de lancers et lance une simulation complete.</p>
+        <a href="/des/simulation/" class="btn btn-purple">Simuler</a>
     </div>
 </div>
 {% endblock %}
