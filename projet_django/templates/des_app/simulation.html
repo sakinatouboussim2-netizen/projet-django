@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block titre %}Simulation personnalisee{% endblock %}
+{% block contenu %}
+<h1>{{ titre }}</h1>
+<div class='card'>
+<form method='post'>{% csrf_token %}
+<label>Nombre de lancers :</label><br><br>
+<input type='number' name='n' value='{{ n_choisi|default:1000 }}' min='1' max='100000' style='padding:8px;width:200px;'><br><br>
+<button type='submit' class='btn'>Lancer</button>
+</form></div>
+{% if resultat %}
+<div class='card'><p>Lancers : {{ resultat.n }} | Egalites : {{ resultat.nb_egalites }} | Probabilite : {{ resultat.probabilite }} | Ecart : {{ resultat.ecart }}</p></div>
+{% endif %}
+<a href='/des/' class='btn'>Retour</a>
+{% endblock %}
