@@ -1,26 +1,79 @@
 {% extends 'base.html' %}
-
 {% block titre %}Accueil - Projet Django{% endblock %}
-
 {% block contenu %}
-<h1>Projet Django - Universite</h1>
-<p>Bienvenue dans ce projet pedagogique Django. Il contient trois parties independantes.</p>
 
-<div class="grid-cartes">
-    <div class="carte">
-        <h2>Partie 1 - Des</h2>
-        <p>Simulation du lancer de deux des a six faces. Calcul de probabilites par la simulation (Exercice 7).</p>
-        <a href="/des/" class="btn">Acceder aux des</a>
+<div style="text-align:center; padding: 40px 0 20px 0;">
+    <h1 style="font-size:2.2rem; margin-bottom:10px;">Projet Django - Universite</h1>
+    <p style="font-size:1.1rem; color:#555; max-width:700px; margin:0 auto 30px auto;">
+        Projet pedagogique realise dans le cadre du cours de Python. Il regroupe trois exercices
+        independants implementes sous forme d application web avec Django 4.2.
+    </p>
+</div>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:40px;">
+    <div style="background:#f0f4ff; border-radius:12px; padding:20px 30px; text-align:center; min-width:130px;">
+        <div style="font-size:2rem; font-weight:700; color:#2563eb;">3</div>
+        <div style="color:#555; font-size:0.95rem;">Applications</div>
     </div>
-    <div class="carte">
-        <h2>Partie 2 - Exceptions</h2>
-        <p>Gestion des erreurs en Python : ZeroDivisionError, ValueError, IndexError avec try / except / finally.</p>
-        <a href="/exceptions/" class="btn btn-green">Acceder aux exceptions</a>
+    <div style="background:#f0fff4; border-radius:12px; padding:20px 30px; text-align:center; min-width:130px;">
+        <div style="font-size:2rem; font-weight:700; color:#16a34a;">14</div>
+        <div style="color:#555; font-size:0.95rem;">Pages</div>
     </div>
-    <div class="carte">
-        <h2>Partie 3 - POO</h2>
-        <p>Programmation orientee objet : classes Animal, Chien, Chat. Encapsulation, heritage, polymorphisme.</p>
-        <a href="/poo/" class="btn btn-orange">Acceder a la POO</a>
+    <div style="background:#fff7ed; border-radius:12px; padding:20px 30px; text-align:center; min-width:130px;">
+        <div style="font-size:2rem; font-weight:700; color:#ea580c;">Django 4.2</div>
+        <div style="color:#555; font-size:0.95rem;">Framework</div>
+    </div>
+    <div style="background:#fdf4ff; border-radius:12px; padding:20px 30px; text-align:center; min-width:130px;">
+        <div style="font-size:2rem; font-weight:700; color:#9333ea;">Python 3</div>
+        <div style="color:#555; font-size:0.95rem;">Langage</div>
     </div>
 </div>
+
+<div class="grid-cartes">
+
+    <div class="carte" style="border-top: 4px solid #2563eb;">
+        <h2 style="color:#2563eb;">Partie 1 - Des</h2>
+        <p>Simulation du lancer de deux des a six faces. Calcul de probabilites par simulation (Exercice 7).</p>
+        <ul style="text-align:left; margin:10px 0 15px 20px; color:#444; font-size:0.9rem;">
+            <li>Lancer des des (n fois)</li>
+            <li>Tester la fonction test()</li>
+            <li>Tableau de probabilites</li>
+            <li>Simulation personnalisee</li>
+        </ul>
+        <a href="/des/" class="btn">Acceder aux des</a>
+    </div>
+
+    <div class="carte" style="border-top: 4px solid #16a34a;">
+        <h2 style="color:#16a34a;">Partie 2 - Exceptions</h2>
+        <p>Gestion des erreurs en Python avec try / except / finally.</p>
+        <ul style="text-align:left; margin:10px 0 15px 20px; color:#444; font-size:0.9rem;">
+            <li>ZeroDivisionError (division)</li>
+            <li>ValueError (conversion)</li>
+            <li>IndexError (acces liste)</li>
+            <li>Tableau des types d exceptions</li>
+        </ul>
+        <a href="/exceptions/" class="btn btn-green">Acceder aux exceptions</a>
+    </div>
+
+    <div class="carte" style="border-top: 4px solid #ea580c;">
+        <h2 style="color:#ea580c;">Partie 3 - POO</h2>
+        <p>Programmation orientee objet : classes Animal, Chien, Chat.</p>
+        <ul style="text-align:left; margin:10px 0 15px 20px; color:#444; font-size:0.9rem;">
+            <li>Creation d objets</li>
+            <li>Heritage (Animal vers Chien/Chat)</li>
+            <li>Polymorphisme (parler())</li>
+            <li>Encapsulation (attributs prives)</li>
+        </ul>
+        <a href="/poo/" class="btn btn-orange">Acceder a la POO</a>
+    </div>
+
+</div>
+
+<div class="card" style="margin-top:20px; background:#f8fafc; border-left: 4px solid #94a3b8;">
+    <p style="margin:0; color:#555; font-size:0.95rem;">
+        <strong>Technologies :</strong>
+        Django 4.2 &bull; Python 3 &bull; HTML/CSS &bull; Gunicorn &bull; WhiteNoise &bull; Railway
+    </p>
+</div>
+
 {% endblock %}
