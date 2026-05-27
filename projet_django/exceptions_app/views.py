@@ -101,7 +101,6 @@ def division_view(request):
         'erreur_type': erreur_type,
         'finally_msg': finally_msg,
         'code_execute': code_execute,
-        'index_str': index_str if request.method == 'POST' else '',
     }
     return render(request, 'exceptions_app/division.html', contexte)
 
@@ -143,7 +142,6 @@ def conversion_view(request):
         'erreur': erreur,
         'finally_msg': finally_msg,
         'code_execute': code_execute,
-        'index_str': index_str if request.method == 'POST' else '',
     }
     return render(request, 'exceptions_app/conversion.html', contexte)
 
